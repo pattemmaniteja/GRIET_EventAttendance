@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fefefe;
+    text-align: center;
+  }
+  
+  .logo img {
+    height: 80px;
+}
+  
+  .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .main-content {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .filters {
+    margin-bottom: 20px;
+  }
+  
+  select {
+    padding: 10px;
+    margin: 0 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  table {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+    border-collapse: collapse;
+    background-color: #fff5f5;
+  }
+  
+  table th, table td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: center;
+  }
+  
+  table th {
+    background-color: #f4c2c2;
+    color: #333;
+  }
+  
+  .go-back {
+    background-color: #601c3a;
+    padding: 10px 20px;
+    border: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button a{
+    color: #F90;
+    text-decoration: none;
+  }
+  
+  button a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .footer-links p,
+  .footer-clubs p {
+    margin: 5px 0;
+  }
+  

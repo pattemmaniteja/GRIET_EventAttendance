@@ -1,0 +1,49 @@
+<%- include("partials/header", { title: 'Home', home: false, about: false, faculty:true}) %>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRIET Event Attendance Manager</title>
+  <link rel="stylesheet" href="css/faculty1.css">
+  <script src="script/faculty1.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <!-- Ongoing Events Section -->
+<section class="events">
+    <h3>Ongoing Events:</h3>
+    <div class="ongoing-events">
+      <div class="ongoing-card">
+        <button class="pause-btn"><i class="fa fa-pause-circle"></i></button>
+        <h4>X-Kernel</h4>
+        <p>Details about the event.</p>
+      </div>
+      <div class="ongoing-card">
+        <button class="pause-btn"><i class="fa fa-pause-circle"></i></button>
+        <h4>RUEDO’25</h4>
+        <p>Details about the event.</p>
+      </div>
+      <div class="ongoing-card">
+        <button class="pause-btn"><i class="fa fa-pause-circle"></i></button>
+        <h4>Resonance’25 [CSI]</h4>
+        <p>Details about the event.</p>
+      </div>
+    </div>
+  
+    <!-- Scrollable Event Bar -->
+    <div class="event-bar-container">
+      <button class="scroll-btn left"><i class="fa fa-chevron-left"></i></button>
+      <div class="event-bar-wrapper">
+        <div class="event-bar" id="eventBar">
+          <div class="event-card"><h4>TEDx GRIET</h4><p>Event 4 details</p></div>
+          <div class="event-card"><h4>AAC Meet</h4><p>Event 5 details</p></div>
+          <div class="event-card"><h4>SDC 2025</h4><p>Event 6 details</p></div>
+          <div class="event-card"><h4>Technical Symposium</h4><p>Event 7 details</p></div>
+          <div class="event-card"><h4>Innovators Meet</h4><p>Event 8 details</p></div>
+          <div class="event-card"><h4>Hackathon</h4><p>Event 9 details</p></div>
+        </div>
+      </div>
+      <button class="scroll-btn right"><i class="fa fa-chevron-right"></i></button>
+    </div>
+  </section>
+</body>
+<%- include("partials/footer")  %>

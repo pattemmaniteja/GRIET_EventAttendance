@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Header</title>
+</head>
+<body>
+    <div class="logo">
+        <img src="images/griet_logo.png" alt="GRIET Logo">
+        <img src="images/accrediation_logos.png" alt="accrediation">
+    </div>
+    <header>
+    <h1>GRIET Event Attendance Manager</h1>
+    <% if (home) { %>
+        <nav>
+            <a href="/about">About Us</a>
+        </nav>
+        <% } %>
+
+    <% if (about) { %>
+        <nav>
+            <a href="/index">Home</a>
+        </nav>
+        <% } %>
+
+    <% if (faculty) { %>
+        <nav>
+        <!-- <div class="menu-icon">--><a href="/faculty2">&#9776;</a><!--</div> -->
+        </nav>
+        <% } %>
+
+    </header>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<%- include("partials/header", { title: 'Home', home: false, about: false, faculty:true}) %>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GRIET Event Attendance Manager</title>
+    <link rel="stylesheet" href="css/faculty2.css" />
+  </head>
+  <body>
+    <main class="main-content">
+      <div class="filters">
+        <select>
+          <option>Year</option>
+          <option>I</option>
+          <option>II</option>
+          <option>III</option>
+          <option>IV</option>
+        </select>
+        <select>
+          <option>Branch</option>
+          <option>CSE</option>
+          <option>AIML</option>
+          <option>CSDS</option>
+          <option>IT</option>
+        </select>
+        <select>
+          <option>Section</option>
+          <option>A</option>
+          <option>B</option>
+          <option>C</option>
+          <option>D</option>
+          <option>E</option>
+          <option>F</option>
+        </select>
+      </div>
+  
+      <table>
+        <thead>
+          <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Branch</th>
+            <th>Section</th>
+            <th>Year</th>
+            <th>Event Attended</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>23241A0512</td>
+            <td>Mani Teja</td>
+            <td>CSE</td>
+            <td>C</td>
+            <td>II</td>
+            <td>X-Kernel</td>
+          </tr>
+          <tr>
+            <td>23241A0503</td>
+            <td>Samuel</td>
+            <td>CSE</td>
+            <td>C</td>
+            <td>II</td>
+            <td>X-Kernel</td>
+          </tr>
+          <tr>
+            <td>23241A0515</td>
+            <td>Jaya Aditya</td>
+            <td>CSE</td>
+            <td>C</td>
+            <td>II</td>
+            <td>X-Kernel</td>
+          </tr>
+          <tr>
+            <td>22434A0519</td>
+            <td>Krishna</td>
+            <td>CSE</td>
+            <td>C</td>
+            <td>II</td>
+            <td>X-Kernel</td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <button class="go-back"><a href="/faculty1">⬅ Go Back</a></button>
+    </main>
+  </body>
+<%- include("partials/footer")  %>
