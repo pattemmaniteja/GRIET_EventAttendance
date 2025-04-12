@@ -1,0 +1,43 @@
+<%- include("partials/header", { title: 'Club', about: false, home:false, faculty:false, club:true }) %>
+<head>
+    <link rel="stylesheet" href="/css/club1.css">
+</head>
+<body>
+<main>
+  <div class="form-card" id="formCard">
+    <div class="form-inner">
+      <form id="eventForm">
+        <h2>Event Details</h2>
+        <label>Event Name:</label>
+        <input type="text" required />
+        
+        <label>CLUB Name:</label>
+        <input type="text" required />
+        
+        <label>Event Type:</label>
+        <select required>
+          <option>Select Type</option>
+          <option>Technical</option>
+          <option>Non-Technical</option>
+        </select>
+
+        <label>Date of Event:</label>
+        <input type="date" required />
+        
+        <label>Venue:</label>
+        <input type="text" required />
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <div class="success-msg" id="successMsg">
+        <!-- will be filled by JS -->
+      </div>
+    </div>
+  </div>
+</main>
+  <script defer src="/script/club1.js"></script>
+</body>
+<footer style="position: relative;">
+<%- include("partials/footer") %>
+</footer>

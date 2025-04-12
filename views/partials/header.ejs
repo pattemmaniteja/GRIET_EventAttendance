@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/main.css">
-    <title>Header</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <title>Griet Event Attendance Manager</title>
 </head>
 <body>
     <div class="logo">
@@ -21,13 +22,35 @@
 
     <% if (about) { %>
         <nav>
-            <a href="/index">Home</a>
+            <a href="/">Home</a>
         </nav>
         <% } %>
 
     <% if (faculty) { %>
         <nav>
-        <!-- <div class="menu-icon">--><a href="/faculty2">&#9776;</a><!--</div> -->
+            <div class="menu-container">
+                <a class="menu-icon">&#9776;</a>
+                <div class="dropdown">
+                  <a href="#">View Permissions</a>
+                  <a href="/faculty2">View Attendance</a>
+                  <a href="/about">About Us</a>
+                  <a href="/">Logout</a>
+                </div>
+            </div>
+        </nav>
+        <% } %>
+
+    <% if (club) { %>
+        <nav>
+            <div class="menu-container">
+                <a class="menu-icon">&#9776;</a>
+                <div class="dropdown">
+                  <a href="#">Upload Permissions</a>
+                  <a href="/club2">Upload Attendance</a>
+                  <a href="/about">About Us</a>
+                  <a href="/">Logout</a>
+                </div>
+            </div>
         </nav>
         <% } %>
 

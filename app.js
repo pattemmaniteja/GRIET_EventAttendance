@@ -9,7 +9,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 // Route
-app.get('/index', (req, res) => {
+app.get('/', (req, res) => {
     res.render('index');
 });
 
@@ -23,6 +23,14 @@ app.get('/faculty1', (req, res) => {
 
 app.get('/faculty2', (req, res) => {
     res.render('faculty2');
+});
+
+app.get('/club1', (req, res) => {
+    res.render('club1');
+});
+
+app.get('/club2', (req, res) => {
+    res.render('club2');
 });
 
 // Start server

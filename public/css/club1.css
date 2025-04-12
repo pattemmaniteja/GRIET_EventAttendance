@@ -1,0 +1,95 @@
+main {
+    display: flex;
+    justify-content: center;
+    padding: 30px 10px;
+  }
+  
+  .form-card {
+    background: #f0e7e7;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px #888;
+    padding: 20px 40px;
+    max-width: 400px;
+    width: 100%;
+    border: 1px solid #ccc;
+  }
+  
+  .form-card h2 {
+    background-color: #591434;
+    color: white;
+    padding: 10px;
+    margin: -20px -40px 20px;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  input, select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+  }
+  
+  button {
+    background-color: #8a1c28;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #a82430;
+  }
+  
+
+
+  /* Flip animation */
+  .form-card {
+    perspective: 1000px;
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 500px; /* Enough height to avoid clipping */
+  }
+  
+  .form-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s ease;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+  
+  .form-card.flipped .form-inner {
+    transform: rotateY(180deg);
+  }
+  
+  form, .success-msg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    top: 0;
+    left: 0;
+  }
+  
+  form {
+    z-index: 2;
+    background: #f0e7e7;
+  }
+  
+  .success-msg {
+    transform: rotateY(180deg);
+    background-color: #591434;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }

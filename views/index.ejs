@@ -1,4 +1,4 @@
-<%- include("partials/header", { title: 'Home', home: true, about: false,faculty:false}) %>
+<%- include("partials/header", { title: 'Home', home: true, about: false,faculty:false, club:false}) %>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,7 @@
 
             <div class="login-box">
                 <h2>Club Login</h2>
-                <form id="clubLoginForm" action="/faculty2" method="get">
+                <form id="clubLoginForm" action="/club1" method="get">
                     <label for="clubUsername">User Name:</label>
                     <input type="text" id="clubUsername" required>
                     <label for="clubPassword">Password:</label>
