@@ -18,13 +18,20 @@ function addReg() {
     regItem.remove();
   }
   
-  function goBack() {
-    alert("Go back clicked!");
-  }
-  
   function submit() {
     const regs = Array.from(document.querySelectorAll('.reg-item'))
       .map(el => el.textContent.replace("❌", "").trim());
-    alert("Submitting: " + regs.join(", "));
+  
+    if (regs.length === 0) {
+      alert("No registrations to submit.");
+      return;
+    }
+  
+    // alert("Submitting: " + regs.join(", "));
+    alert("Submitted");
+  
+    // Clear the registration list after submission
+    const regList = document.getElementById("regList");
+    regList.innerHTML = "";
   }
   
