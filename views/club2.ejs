@@ -9,9 +9,12 @@
 <body>
 
   <div class="container">
+  <form id="addForm">
     <label for="regInput">Reg.No:</label>
-    <input type="text" id="regInput" placeholder="Enter Reg No">
-    <button onclick="addReg()">ADD ➕</button>
+    <input type="text" id="regInput" name="regInput" placeholder="Enter Reg No">
+    <button type="submit">ADD ➕</button>
+    <!-- onclick="addReg()" -->
+  </form>
 
     <div class="reg-list" id="regList"></div>
 
