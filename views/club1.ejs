@@ -8,28 +8,27 @@
     <div class="form-inner">
       <form id="eventForm">
         <h2>Event Details</h2>
-        <label>Event Name:</label>
-        <input type="text" required />
         
-        <label>CLUB Name:</label>
-        <input type="text" required />
+        <label>Event Name:</label>
+        <input type="text" name="eventName" required />
+        
+        <label>Club Name:</label>
+        <input type="text" name="clubName" required />
         
         <label>Event Type:</label>
-        <select required>
-          <option>Select Type</option>
-          <option>Technical</option>
-          <option>Non-Technical</option>
+        <select name="eventType" required>
+          <option value="">Select Type</option>
+          <option value="Technical">Technical</option>
+          <option value="Non-Technical">Non-Technical</option>
         </select>
-
-        <label>Date of Event:</label>
-        <input type="date" required />
-        
-        <label>Venue:</label>
-        <input type="text" required />
-
+      
+        <label>Description:</label>
+        <textarea name="description" rows="4" cols="50" placeholder="Write a short description..." required></textarea>
+      
         <button type="submit">Submit</button>
       </form>
-
+      
+      
       <div class="success-msg" id="successMsg">
         <!-- will be filled by JS -->
       </div>

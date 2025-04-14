@@ -4,36 +4,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>GRIET Event Attendance Manager</title>
     <link rel="stylesheet" href="css/faculty2.css" />
+    <script src="script/faculty2.js" defer></script>
   </head>
   <body>
     <main class="main-content">
-      <div class="filters">
-        <select>
-          <option>Year</option>
-          <option>I</option>
-          <option>II</option>
-          <option>III</option>
-          <option>IV</option>
+      <form class="filters" method="POST" action="/get-data">
+        <select name="year">
+          <option value="">Year</option>
+          <option value="1">I</option>
+          <option value="2">II</option>
+          <option value="3">III</option>
+          <option value="4">IV</option>
         </select>
-        <select>
-          <option>Branch</option>
-          <option>CSE</option>
-          <option>AIML</option>
-          <option>CSDS</option>
-          <option>IT</option>
+      
+        <select name="branch" id="branchSelect" onchange="updateSections()">
+          <option value="">Branch</option>
+          <option value="cse">CSE</option>
+          <option value="aiml">AIML</option>
+          <option value="csds">CSDS</option>
+          <option value="it">IT</option>
         </select>
-        <select>
-          <option>Section</option>
-          <option>A</option>
-          <option>B</option>
-          <option>C</option>
-          <option>D</option>
-          <option>E</option>
-          <option>F</option>
+      
+        <select name="section" id="sectionSelect">
+          <option value="">Section</option>
         </select>
-        <button>Get</button>
-      </div>
-  
+      
+        <button type="submit">Get</button>
+      </form>
+      
       <table>
         <thead>
           <tr>
@@ -46,42 +44,22 @@
           </tr>
         </thead>
         <tbody>
-          <!-- <tr>
-            <td>23241A0512</td>
-            <td>Mani Teja</td>
-            <td>CSE</td>
-            <td>C</td>
-            <td>II</td>
-            <td>X-Kernel</td>
-          </tr>
-          <tr>
-            <td>23241A0503</td>
-            <td>Samuel</td>
-            <td>CSE</td>
-            <td>C</td>
-            <td>II</td>
-            <td>X-Kernel</td>
-          </tr>
-          <tr>
-            <td>23241A0515</td>
-            <td>Jaya Aditya</td>
-            <td>CSE</td>
-            <td>C</td>
-            <td>II</td>
-            <td>X-Kernel</td>
-          </tr>
-          <tr>
-            <td>22434A0519</td>
-            <td>Krishna</td>
-            <td>CSE</td>
-            <td>C</td>
-            <td>II</td>
-            <td>X-Kernel</td>
-          </tr> -->
+          <% data.forEach(participant => { %>
+            <tr>
+              <td><%= participant.rollno %></td>
+              <td><%= participant.name %></td>
+              <td><%= participant.year %></td>
+              <td><%= participant.branch %></td>
+              <td><%= participant.section %></td>
+              <td><%= participant.event %></td>
+            </tr>
+          <% }) %>
         </tbody>
       </table>
   
-      <button class="go-back"><a href="/faculty1">⬅ Go Back</a></button>
+      <button class="go-back"><form method="get" action="faculty1.ejs"><a href="/faculty1">⬅ Go Back</a></form></button>
     </main>
   </body>
-<%- include("partials/footer")  %>
+  <footer style="position: relative;">
+    <%- include("partials/footer") %>
+    </footer>

@@ -6,7 +6,7 @@ document.getElementById("addForm").addEventListener("submit", async function(e) 
   if (!regNo) return;
 
   try {
-    const response = await fetch("/add", {
+    const response = await fetch("/add-data", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

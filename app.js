@@ -6,6 +6,7 @@ const port = 3000;
 const {Faculty , Club} = require("./models/user.js");
 const {Student} = require("./models/student.js");
 const {Participant} = require("./models/participant.js");
+const {Event} = require("./models/event.js");
 
 const mongoose = require("mongoose");
 main()
@@ -51,13 +52,23 @@ app.get('/about', (req, res) => {
     res.render('about');
 });
 
+app.get('/faculty1', async(req,res) =>{
+    try{
+    const events = await Event.find();
+    res.render('faculty1',{events});
+    }catch (error) {
+        res.status(500).send('Server error');
+    }
+});
+
 app.post('/faculty1', async (req, res) => {
     const {facultyUsername, facultyPassword} = req.body;
     try{
         const faculty = await Faculty.findOne({ mail: facultyUsername, password: facultyPassword });
 
         if (faculty) {
-            res.render('faculty1');
+            const events = await Event.find();
+            res.render('faculty1',{events});
         } else {
             res.send('<script>alert("Invalid Faculty credentials"); window.location.href="/";</script>');
 
@@ -68,7 +79,26 @@ app.post('/faculty1', async (req, res) => {
 });
 
 app.get('/faculty2', (req, res) => {
-    res.render('faculty2');
+    res.render('faculty2', { data: [] });
+});
+
+app.post('/get-data', async (req, res) => {
+  const { year, branch, section } = req.body;
+  try {
+    const data = await Participant.find({
+      year: parseInt(year),  
+      branch: branch,
+      section: section
+    });
+    res.render('faculty2',{data});
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server error");
+  }
+});
+
+app.get('/club1',(req,res) =>{
+    res.render('club1');
 });
 
 app.post('/club1', async (req, res) => {
@@ -88,11 +118,29 @@ app.post('/club1', async (req, res) => {
     }
 });
 
+app.post('/add-event' , async (req,res)=>{
+    const { eventName, clubName, eventType, description}= req.body;
+    console.log(eventName);
+    try{
+        const newEvent = new Event({
+            eventname:eventName,
+            clubname:clubName,
+            eventType:eventType,
+            description:description
+        });
+        await newEvent.save();
+        res.json({ success: true });
+    }catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: "Server error" });
+    }
+});
+
 app.get('/club2', (req, res) => {
     res.render('club2');
 });
 
-app.post('/add',async (req,res) =>{
+app.post('/add-data',async (req,res) =>{
     const {regInput} = req.body;
     console.log(regInput);
     try{

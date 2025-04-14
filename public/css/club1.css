@@ -33,6 +33,18 @@ main {
     border-radius: 5px;
     border: 1px solid #aaa;
   }
+
+  textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    resize: vertical;
+  }
+  
   
   button {
     background-color: #8a1c28;
@@ -93,3 +105,5 @@ main {
     justify-content: center;
     align-items: center;
   }
+
+  
