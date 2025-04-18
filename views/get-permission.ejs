@@ -1,0 +1,65 @@
+<%- include("partials/header", { title: 'Get-Permission', about: false, home:false, faculty:false, club:false, permission_add:false, permission_get:true }) %>
+
+<head>
+  <link rel="stylesheet" href="/css/getper.css">
+</head>
+
+<!-- <main>
+  <% permissions.forEach(function(permission) { %>
+    <section class="permission-card">
+      <div class="card-content">
+        <div class="file-preview">
+          <% if (permission.file && permission.file.data) { %>
+            <% if (permission.file.contentType.startsWith('image/')) { %>
+              <img src="data:<%= permission.file.contentType %>;base64,<%= permission.file.data.toString('base64') %>" alt="File Preview" />
+            <% } else { %>
+              <a href="data:<%= permission.file.contentType %>;base64,<%= permission.file.data.toString('base64') %>" download="<%= permission.file.originalName %>">Download File</a>
+            <% } %>
+          <% } else { %>
+            <p>No file uploaded.</p>
+          <% } %>
+        </div>
+        <div class="description">
+          <h3>Permission:</h3>
+          <p><%= permission.permission %></p>
+        </div>
+      </div>
+    </section>
+  <% }); %>
+</main> -->
+<main>
+  <% permissions.forEach(function(permission) { %>
+    <section class="permission-card">
+      <div class="card-content">
+        <div class="file-preview">
+          <% if (permission.file && permission.file.data) { %>
+            <% if (permission.file.contentType.startsWith('image/')) { %>
+              <img src="data:<%= permission.file.contentType %>;base64,<%= permission.file.data.toString('base64') %>" alt="Permission Image" onclick="openModal(this)" style="cursor:pointer; max-width:100%; height:auto;" />
+            <% } else { %>
+              <a href="data:<%= permission.file.contentType %>;base64,<%= permission.file.data.toString('base64') %>" download="<%= permission.file.originalName %>">Download File</a>
+            <% } %>
+          <% } else { %>
+            <p>No file uploaded.</p>
+          <% } %>
+        </div>
+        <div class="description">
+          <h3>Permission:</h3>
+          <p><%= permission.permission %></p>
+        </div>
+      </div>
+    </section>
+  <% }); %>
+</main>
+
+<!-- Modal Structure -->
+<div id="imageModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage">
+  <div id="caption"></div>
+</div>
+
+<script defer src="/script/get-permission.js"></script>
+
+<footer style="position: relative; margin-top: 20px;">
+  <%- include("partials/footer") %>
+  </footer>

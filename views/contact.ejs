@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us – GRIET Event Attendance</title>
+  <link rel="stylesheet" href="/css/contact.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <%- include("partials/header", { title: 'Club', about: true, home:false, faculty:false, club:false, permission_add:false, permission_get:false }) %>
+
+  <main class="contact-container">
+    <h1>Contact Us</h1>
+
+    <section class="contributors">
+      <h2>Project Contributors</h2>
+      <ul>
+        <li><strong>P. Mani Teja</strong> – 23241A05J2</li>
+        <li><strong>V. Samuel Rufus</strong> – 23241A05K3</li>
+        <li><strong>Y. Jaya Aditya</strong> – 23241A05K5</li>
+        <li><strong>Rajbhar Krishna</strong> – 24245A0519</li>
+      </ul>
+    </section>
+
+    <section class="support">
+      <h2>Need Help?</h2>
+      <p>If you face any issues with event attendance or have suggestions, feel free to reach out to our support team.</p>
+      <p><strong>Email:</strong> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=manitejapattem@gmail.com&su=Event Attendance Query&body=Hi Team," 
+        target="_blank" 
+        class="email-link">
+        manitejapattem@gmail.com
+     </a>
+     </p>
+      <p><strong>Phone:</strong> +917801037520</p>
+    </section>
+  </main>
+
+  <footer style="position: relative; margin-top: 20px;">
+    <%- include("partials/footer") %>
+    </footer>
+</body>
+</html>

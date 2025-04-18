@@ -1,0 +1,31 @@
+<%- include("partials/header", { title: 'Add-Permission', about: false, home:false, faculty:false, club:false, permission_add:true, permission_get:false }) %>
+<head>
+    <link rel="stylesheet" href="/css/addper.css">
+</head>
+<body>
+<main>
+  <div class="form-card" id="formCard">
+    <div class="form-inner">
+        <form id="permissionForm" method="post" enctype="multipart/form-data"> 
+            <h2>Permission Details</h2>
+          
+            <label>Permission Description:</label>
+            <textarea name="description" rows="4" cols="50" placeholder="Write a short description..." required></textarea>
+          
+            <!-- 📁 File Upload Option -->
+            <label>Upload File:</label>
+            <input type="file" name="eventFile" accept=".jpg,.jpeg,.png,.pdf" />
+          
+            <button type="submit">Submit</button>
+        </form>
+      
+      
+      <div class="success-msg" id="successMsg">
+        <!-- will be filled by JS -->
+      </div>
+    </div>
+  </div>
+</main>
+  <script defer src="/script/add-permission.js"></script>
+</body>
+<%- include("partials/footer") %>

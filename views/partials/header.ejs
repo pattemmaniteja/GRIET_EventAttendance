@@ -14,44 +14,72 @@
     </div>
     <header>
     <h1>GRIET Event Attendance Manager</h1>
-    <% if (home) { %>
+        <% if (home) { %>
         <nav>
             <a href="/about">About Us</a>
         </nav>
         <% } %>
 
-    <% if (about) { %>
+        <% if (about) { %>
         <nav>
             <a href="/">Home</a>
         </nav>
         <% } %>
 
-    <% if (faculty) { %>
+        <% if (faculty) { %>
         <nav>
             <div class="menu-container">
                 <a class="menu-icon">&#9776;</a>
                 <div class="dropdown">
-                  <a href="#">View Permissions</a>
+                  <a href="/get-permission">View Permissions</a>
                   <a href="/faculty2">View Attendance</a>
                   <a href="/about">About Us</a>
-                  <a href="/">Logout</a>
+                  <a href="/logout">Logout</a>
                 </div>
             </div>
         </nav>
         <% } %>
 
-    <% if (club) { %>
+        <% if (club) { %>
         <nav>
             <div class="menu-container">
                 <a class="menu-icon">&#9776;</a>
                 <div class="dropdown">
-                  <a href="#">Upload Permissions</a>
+                  <a href="/add-permission">Upload Permissions</a>
                   <a href="/club2">Upload Attendance</a>
                   <a href="/about">About Us</a>
-                  <a href="/">Logout</a>
+                  <a href="/logout">Logout</a>
                 </div>
             </div>
         </nav>
+        <% } %>
+
+        <% if (permission_add) { %>
+        <nav>
+            <div class="menu-container">
+                <a class="menu-icon">&#9776;</a>
+                <div class="dropdown">
+                    <a href="/club1">Back</a>
+                    <a href="/club2">Upload Attendance</a>
+                    <a href="/about">About Us</a>
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+        </nav>
+        <% } %>
+
+        <% if (permission_get) { %>
+            <nav>
+                <div class="menu-container">
+                    <a class="menu-icon">&#9776;</a>
+                    <div class="dropdown">
+                        <a href="/faculty1">Back</a>
+                        <a href="/faculty2">View Attendance</a>
+                        <a href="/about">About Us</a>
+                        <a href="/logout">Logout</a>
+                    </div>
+                </div>
+            </nav>
         <% } %>
 
     </header>

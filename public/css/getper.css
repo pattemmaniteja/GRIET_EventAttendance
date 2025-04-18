@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  /* Permission Card */
+  .permission-card {
+    background-color: #f0e7e7;
+    margin: 40px auto;
+    width: 80%;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .card-content {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+  }
+  
+  .file-preview{
+    width: 200px;
+    height: 200px;
+    align-content: center;
+  }
+
+  .file-preview img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    background-color: #e1e1e1;
+    border-radius: 8px;
+  }
+  
+  .description h3 {
+    margin-bottom: 5px;
+  }
+  
+  .description h4 {
+    color: #999;
+    margin-top: 0;
+  }
+  
+  .description p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  /* Modal container */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+/* Modal content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption text */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 30px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}

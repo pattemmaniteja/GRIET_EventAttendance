@@ -53,6 +53,9 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/faculty1', async(req,res) =>{
+    if (!req.session.userId) {
+        return res.redirect("/");
+    }
     try{
     const events = await Event.find();
     res.render('faculty1',{events});
@@ -65,8 +68,8 @@ app.post('/faculty1', async (req, res) => {
     const {facultyUsername, facultyPassword} = req.body;
     try{
         const faculty = await Faculty.findOne({ mail: facultyUsername, password: facultyPassword });
-
         if (faculty) {
+            req.session.userId = faculty._id;
             const events = await Event.find();
             res.render('faculty1',{events});
         } else {
@@ -79,10 +82,16 @@ app.post('/faculty1', async (req, res) => {
 });
 
 app.get('/faculty2', (req, res) => {
+    if (!req.session.userId) {
+        return res.redirect("/");
+    }
     res.render('faculty2', { data: [] });
 });
 
 app.post('/get-data', async (req, res) => {
+    if (!req.session.userId) {
+        return res.redirect("/");
+    }
   const { year, branch, section } = req.body;
   try {
     const data = await Participant.find({
@@ -98,6 +107,9 @@ app.post('/get-data', async (req, res) => {
 });
 
 app.get('/club1',(req,res) =>{
+    if (!req.session.clubId) {
+        return res.redirect("/");
+    }
     res.render('club1');
 });
 
@@ -119,8 +131,10 @@ app.post('/club1', async (req, res) => {
 });
 
 app.post('/add-event' , async (req,res)=>{
+    if (!req.session.clubId) {
+        return res.redirect("/");
+    }
     const { eventName, clubName, eventType, description}= req.body;
-    console.log(eventName);
     try{
         const newEvent = new Event({
             eventname:eventName,
@@ -137,12 +151,17 @@ app.post('/add-event' , async (req,res)=>{
 });
 
 app.get('/club2', (req, res) => {
+    if (!req.session.clubId) {
+        return res.redirect("/");
+    }
     res.render('club2');
 });
 
 app.post('/add-data',async (req,res) =>{
+    if (!req.session.clubId) {
+        return res.redirect("/");
+    }
     const {regInput} = req.body;
-    console.log(regInput);
     try{
         const data = await Student.findOne({rollno: regInput});
         if (!data) {
@@ -166,6 +185,69 @@ app.post('/add-data',async (req,res) =>{
         res.status(500).json({ success: false, message: "Server error" });
     }
 });
+
+app.get('/add-permission',(req,res) => {
+    if (!req.session.clubId) {
+        return res.redirect("/");
+    }
+    res.render('add-permission');
+});
+
+const fs = require('fs');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+
+app.post('/addscript', upload.single('eventFile'), async (req,res) =>{
+    const {description} = req.body;
+
+    try{
+    const fileData = fs.readFileSync(req.file.path);
+    const admin = await Club.findById(req.session.clubId);
+    const clubName = admin.mail.split("@")[0];
+    const data = await Event.findOne({clubname:clubName});
+
+    data.permission = description;
+    data.file ={
+        data:fileData,
+        contentType: req.file.mimetype,
+        originalName: req.file.originalname
+    };
+    fs.unlinkSync(req.file.path);
+    await data.save();
+    res.json({success:true});
+    }catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: "Update failed" });
+      }
+});
+
+app.get('/get-permission',async (req, res) =>{
+    if (!req.session.userId) {
+        return res.redirect("/");
+    }
+    try{
+        const permissions = await Event.find({},'file permission');
+        res.render('get-permission',{permissions});
+    }catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+});
+
+app.get('/terms',(req,res) =>{
+    res.render('terms');
+});
+
+app.get('/contact',(req,res) =>{
+    res.render('contact');
+});
+
+app.get('/logout',(req,res) =>{
+    req.session.destroy((err)=>{
+        res.redirect("/");
+    });
+});
+
 // Start server
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);

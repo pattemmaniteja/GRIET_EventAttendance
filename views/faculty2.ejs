@@ -1,4 +1,4 @@
-<%- include("partials/header", { title: 'Faculty', home: false, about: false, faculty:true, club:false}) %>
+<%- include("partials/header", { title: 'Faculty', home: false, about: false, faculty:true, club:false, permission_add:false, permission_get:false}) %>
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,7 +8,7 @@
   </head>
   <body>
     <main class="main-content">
-      <form class="filters" method="POST" action="/get-data">
+      <form class="filters" method="post" action="/get-data">
         <select name="year">
           <option value="">Year</option>
           <option value="1">I</option>

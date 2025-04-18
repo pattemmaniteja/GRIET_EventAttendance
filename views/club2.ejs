@@ -1,4 +1,4 @@
-<%- include("partials/header", { title: 'About', about: false, home:false, faculty:false, club:true }) %>
+<%- include("partials/header", { title: 'About', about: false, home:false, faculty:false, club:true, permission_add:false, permission_get:false }) %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +19,7 @@
     <div class="reg-list" id="regList"></div>
 
     <div class="buttons">
-      <button><form method="get" action="club1.ejs"><a href="club1">⬅️ Go Back</a></form></button>
+      <button><form  method="get" action="club1.ejs"><a href="club1">⬅️ Go Back</a></form></button>
       <button onclick="submit()">Submit ✅</button>
     </div>
   </div>
