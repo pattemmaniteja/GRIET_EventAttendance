@@ -3,30 +3,6 @@
 <head>
   <link rel="stylesheet" href="/css/getper.css">
 </head>
-
-<!-- <main>
-  <% permissions.forEach(function(permission) { %>
-    <section class="permission-card">
-      <div class="card-content">
-        <div class="file-preview">
-          <% if (permission.file && permission.file.data) { %>
-            <% if (permission.file.contentType.startsWith('image/')) { %>
-              <img src="data:<%= permission.file.contentType %>;base64,<%= permission.file.data.toString('base64') %>" alt="File Preview" />
-            <% } else { %>
-              <a href="data:<%= permission.file.contentType %>;base64,<%= permission.file.data.toString('base64') %>" download="<%= permission.file.originalName %>">Download File</a>
-            <% } %>
-          <% } else { %>
-            <p>No file uploaded.</p>
-          <% } %>
-        </div>
-        <div class="description">
-          <h3>Permission:</h3>
-          <p><%= permission.permission %></p>
-        </div>
-      </div>
-    </section>
-  <% }); %>
-</main> -->
 <main>
   <% permissions.forEach(function(permission) { %>
     <section class="permission-card">
@@ -60,6 +36,6 @@
 
 <script defer src="/script/get-permission.js"></script>
 
-<footer style="position: relative; margin-top: 20px;">
+<!-- <footer style="position: relative; margin-top: 20px;"> -->
   <%- include("partials/footer") %>
-  </footer>
+  <!-- </footer> -->

@@ -1,24 +1,29 @@
+require('dotenv').config();
+
+const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-// importing the collections from db
-const {Faculty , Club} = require("./models/user.js");
-const {Student} = require("./models/student.js");
-const {Participant} = require("./models/participant.js");
-const {Event} = require("./models/event.js");
+// MongoDB connection (use env variable for production)
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected!"))
+  .catch((err) => console.log("MongoDB connection error:", err));
 
-const mongoose = require("mongoose");
-main()
-    .then(() =>{
-        console.log("connection successful");
-    })
-    .catch((err) =>{
-        console.log(err);
-    })
-async function main() {
-    await mongoose.connect("mongodb://127.0.0.1:27017/griet");
-}
+
+// const mongoose = require("mongoose");
+// main()
+//     .then(() =>{
+//         console.log("connection successful");
+//     })
+//     .catch((err) =>{
+//         console.log(err);
+//     })
+// async function main() {
+//     await mongoose.connect("mongodb://127.0.0.1:27017/griet");
+// }
+
+// ____________________________________________________________________________________________________________________________________________________
 
 //session management
 const session = require("express-session");
@@ -28,11 +33,14 @@ app.use(session({
     saveUninitialized: false
 }));
 
-
+// importing the collections from db
+const {Faculty , Club} = require("./models/user.js");
+const {Student} = require("./models/student.js");
+const {Participant} = require("./models/participant.js");
+const {Event} = require("./models/event.js");
 
 //for parsing data
 app.use(express.urlencoded({ extended: true })); // handles form POST data
-app.use(express.static('public'));
 app.use(express.json()); // <-- this is important for JSON body parsing
 
 // Set EJS as templating engine

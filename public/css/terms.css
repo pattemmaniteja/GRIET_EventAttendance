@@ -17,8 +17,12 @@ body {
   
   .terms-container h1 {
     text-align: center;
-    color: #2c3e50;
+    color: #ffffff;
     margin-bottom: 30px;
+  }
+
+  h1{
+    background-color:#591434 ;
   }
   
   .terms-container section {

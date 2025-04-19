@@ -48,10 +48,10 @@
             <tr>
               <td><%= participant.rollno %></td>
               <td><%= participant.name %></td>
-              <td><%= participant.branch %></td>
-              <td><%= participant.section %></td>
+              <td><%= participant.branch.toUpperCase() %></td>
+              <td><%= participant.section.toUpperCase() %></td>
               <td><%= participant.year %></td>
-              <td><%= participant.event %></td>
+              <td><%= participant.event.toUpperCase() %></td>
             </tr>
           <% }) %>
         </tbody>
@@ -60,6 +60,6 @@
       <button class="go-back"><form method="get" action="faculty1.ejs"><a href="/faculty1">⬅ Go Back</a></form></button>
     </main>
   </body>
-  <footer style="position: relative;">
+  <!-- <footer style="position: relative;"> -->
     <%- include("partials/footer") %>
-    </footer>
+    <!-- </footer> -->
