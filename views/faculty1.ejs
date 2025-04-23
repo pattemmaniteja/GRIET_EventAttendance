@@ -12,13 +12,21 @@
 <section class="events">
     <h3>Ongoing Events:</h3>
     <div class="ongoing-events">
-      <% events.forEach(event => { %>
-        <div class="ongoing-card">
-          <button class="pause-btn"><i class="fa fa-pause-circle"></i></button>
-          <h4><%= event.eventname %></h4>
-          <p><%= event.description %></p>
+      <% if (events.length > 0) { %>
+        <% events.forEach(event => { %>
+          <div class="ongoing-card">
+            <button class="pause-btn"><i class="fa fa-pause-circle"></i></button>
+            <h4><%= event.eventname %></h4>
+            <p><%= event.description %></p>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <div class="no-events">
+          <p>No ongoing events.</p>
         </div>
-      <% }) %>
+      <% } %>
+    </div>
+    
       <!-- <div class="ongoing-card">
         <button class="pause-btn"><i class="fa fa-pause-circle"></i></button>
         <h4>X-Kernel</h4>
@@ -59,6 +67,6 @@
     </div>
   </section>
 </body>
-<footer style="position: relative; margin-top: 20px;">
+<footer style="margin-top: 30px;">
   <%- include("partials/footer") %>
   </footer>

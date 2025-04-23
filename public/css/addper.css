@@ -59,3 +59,47 @@ main {
   button:hover {
     background-color: #a82430;
   }
+  .form-card {
+    perspective: 1000px;
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 400px; /* Enough height to avoid clipping */
+  }
+  
+  .form-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s ease;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+  
+  .form-card.flipped .form-inner {
+    transform: rotateY(180deg);
+  }
+  
+  form, .success-msg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    top: 0;
+    left: 0;
+  }
+  
+  form {
+    z-index: 2;
+    background: #f0e7e7;
+  }
+  
+  .success-msg {
+    transform: rotateY(180deg);
+    background-color: #591434;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  

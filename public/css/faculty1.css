@@ -17,6 +17,18 @@ body {
     justify-content: center;
     margin-top: 20px;
   }
+
+  .no-events{
+    background-color:#f0e7e7 ;
+    height: 170px;
+    width: 250px;
+    border-radius:10px;
+    text-align: center;
+    display: flex;
+    justify-content: center; /* horizontal centering */
+    align-items: center; 
+  }
+  
   
   .ongoing-card {
     background-color: #fff;

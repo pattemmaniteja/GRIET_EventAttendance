@@ -13,7 +13,6 @@ mongoose.connect(process.env.MONGO_URI)
   .catch((err) => console.log("MongoDB connection error:", err));
 
 
-// const mongoose = require("mongoose");
 // main()
 //     .then(() =>{
 //         console.log("connection successful");
@@ -26,6 +25,9 @@ mongoose.connect(process.env.MONGO_URI)
 // }
 
 // ____________________________________________________________________________________________________________________________________________________
+
+//Hashing password
+const bcrypt = require('bcrypt');
 
 //session management
 const session = require("express-session");
@@ -75,21 +77,28 @@ app.get('/faculty1', async(req,res) =>{
 });
 
 app.post('/faculty1', async (req, res) => {
-    const {facultyUsername, facultyPassword} = req.body;
-    try{
-        const faculty = await Faculty.findOne({ mail: facultyUsername, password: facultyPassword });
-        if (faculty) {
-            req.session.userId = faculty._id;
-            const events = await Event.find();
-            res.render('faculty1',{events});
-        } else {
-            res.send('<script>alert("Invalid Faculty credentials"); window.location.href="/";</script>');
-
+    const { facultyUsername, facultyPassword } = req.body;
+    try {
+        const faculty = await Faculty.findOne({ mail: facultyUsername });
+        if (!faculty) {
+            return res.send('<script>alert("Invalid Faculty credentials"); window.location.href="/";</script>');
         }
+
+        const isMatch = await bcrypt.compare(facultyPassword, faculty.password);
+        if (!isMatch) {
+            return res.send('<script>alert("Invalid Faculty credentials"); window.location.href="/";</script>');
+        }
+
+        req.session.userId = faculty._id;
+        const events = await Event.find();
+        res.render('faculty1', { events });
+
     } catch (error) {
+        console.error(error);
         res.status(500).send('Server error');
     }
 });
+
 
 app.get('/faculty2', (req, res) => {
     if (!req.session.userId) {
@@ -123,22 +132,27 @@ app.get('/club1',(req,res) =>{
     res.render('club1');
 });
 
+
 app.post('/club1', async (req, res) => {
-    const {clubUsername, clubPassword} = req.body;
-    try{
-        const club = await Club.findOne({ mail: clubUsername, password: clubPassword });
-
-        if (club) {
-            req.session.clubId=club._id;
-            res.render('club1');
-        } else {
-            res.send('<script>alert("Invalid Club credentials"); window.location.href="/";</script>');
-
+    const { clubUsername, clubPassword } = req.body;
+    try {
+        const club = await Club.findOne({ mail: clubUsername });
+        if (!club) {
+            return res.send('<script>alert("Invalid Club credentials"); window.location.href="/";</script>');
         }
+
+        const isMatch = await bcrypt.compare(clubPassword, club.password);
+        if (!isMatch) {
+            return res.send('<script>alert("Invalid Club credentials"); window.location.href="/";</script>');
+        }
+
+        req.session.clubId = club._id;
+        res.render('club1');
     } catch (error) {
         res.status(500).send('Server error');
     }
 });
+
 
 app.post('/add-event' , async (req,res)=>{
     if (!req.session.clubId) {
@@ -172,6 +186,10 @@ app.post('/add-data',async (req,res) =>{
         return res.redirect("/");
     }
     const {regInput} = req.body;
+    const check = await Participant.findOne({rollno: regInput});
+    if (check) {
+        return res.json({ success: false, message: "Student already added" });
+    }
     try{
         const data = await Student.findOne({rollno: regInput});
         if (!data) {
@@ -215,7 +233,6 @@ app.post('/addscript', upload.single('eventFile'), async (req,res) =>{
     const admin = await Club.findById(req.session.clubId);
     const clubName = admin.mail.split("@")[0];
     const data = await Event.findOne({clubname:clubName});
-
     data.permission = description;
     data.file ={
         data:fileData,
